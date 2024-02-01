@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/style.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.min.js"></script>
+    <title>Say Hello! Chat Room</title>
+</head>
+<body>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // connect to the backend:
+            var socket = io.connect("http://localhost:4999")
+
+            // Send a message to BE when connected:
+            socket.on('connect', function() {
+                socket.send("User joined!");
+            });
+
+            // Add the message the user enter to the <div> box id ="messages":
+            socket.on('message', function(data) {
+                $('#messages').append($('<p>').text(data));
+            });
+
+            // Click the "Send" button:            
+            $('#sendBtn').on('click', function() {
+                socket.send($('#message').val());
+                $('#message').val('');
+            });
+
+            // Leave the chat room when click leaveBtn
+            $('#leaveBtn').on('click', function() {
+                socket.on('disconnect');
+                window.location.href = "{{ url_for('index') }}";
+            });
+        });
+    </script>
+    
+    <img src="https://raw.githubusercontent.com/MariyaSha/SimpleGreetingApp/main/logo.png"><br>
+
+    <div>
+        <h1>Room ID: {{session['room']}}</h1><br>
+    </div>
+
+    <div id="cbox">
+        <!-- div for message sent: -->
+        <div id="messages"></div><br><br>
+        
+        <input type="text" id="message" placeholder="Enter a message..."><br>
+        <button id="sendBtn">Send</button>
+    </div>
+    <button id="leaveBtn">Leave Room</button>
+</body>
+</html>

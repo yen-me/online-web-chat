@@ -1,0 +1,81 @@
+body {
+    text-align: center;
+    background-color: SlateGrey;
+}
+
+img {
+    margin: 60px 0 30px 0;
+    width: 250px;
+}
+
+h1 {
+    color: white;
+    font-family: monospace;
+    font-size: 1.5em;
+    display: inline-block;
+    margin:  10px 30px 20px 20px;
+}
+
+input {
+    width: 300px;
+    margin: 5px 20px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    font-family: monospace;
+    font-size: 1em;
+    text-align: center;
+    border: solid 2px gray;
+}
+  
+input:focus {
+    outline: none;
+    border: solid 2px #00FFCE;
+}
+
+/* Input box for #message */
+#message {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+
+}
+
+button {
+    background-color: #00FFCE;
+    font-family: monospace;
+    font-size: 1em;
+    border-radius: 10px;
+    margin: 20px 20px;
+    height: 30px;
+    width: 100px;
+    border-color: #00FFCE;
+}
+
+#sendBtn {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#leaveBtn {
+    width: 130px;
+    background-color: #ff899c;
+    border-color: #ff899c;
+
+
+}
+
+#cbox {
+    color: black;
+    font-family: monospace;
+    text-align: left;
+    border-style: solid;
+    border-color: white;
+    border-radius: 10px;
+    background-color: white;
+    width: 60%;
+    margin: auto;
+    padding: 10px 20px;
+}
